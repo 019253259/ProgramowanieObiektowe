@@ -1,9 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "tablica.cpp"
-#include "tablica_wysw.cpp"
-#include "menu.cpp"
+#include "menu.h"
 
 int main(int argc, char const *argv[])
 {
