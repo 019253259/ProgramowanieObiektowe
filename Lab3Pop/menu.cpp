@@ -52,14 +52,23 @@ void menu_wyswietl() {
                 zapisz_plik(X);
                 break; 
             case 6:
-                max(X);
-                break; 
+		{
+                int ma = max(X);
+		cout << ma;
+                break;
+		} 
 	    case 7:
-		min(X);
-		break;  
+		{
+		int mi = min(X);
+		cout << mi;
+		break;
+		}  
 	    case 8:
-		srednia(X);
-		break;                                    
+		{
+		float sredni = srednia(X);
+		cout << sredni;
+		break;
+		}                                   
         }
 
     } while (wybrana_opcja != 0);

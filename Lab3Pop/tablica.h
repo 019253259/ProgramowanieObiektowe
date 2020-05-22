@@ -5,6 +5,11 @@
 
 struct Tabela 
 {
+   /*
+   * @param[in] pocziloscWierszy - ilosc Wierszy
+   * @param[in] pocziloscKolumn - ilosc Kolumn
+   * @param[in,out] **tablica - tablica wielowymiarowa
+   */
    int pocziloscWierszy = 0;
    int pocziloscKolumn = 0;
    int **tablica = new int*[pocziloscWierszy];
@@ -16,8 +21,8 @@ void wczytaj_plik(Tabela tabelka);
 void zapisz_plik(Tabela tabelka);
 void tablica_zmien_rozmiar (Tabela tabelka, int iloscWierszy, int iloscKolumn);
 void tablica_dodaj_element (Tabela tabelka);
-void max(Tabela tabelka);
-void min(Tabela tabelka);
-void srednia(Tabela tabelka);
+int max(Tabela tabelka);
+int min(Tabela tabelka);
+float srednia(Tabela tabelka); 
 
 #endif

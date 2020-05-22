@@ -22,18 +22,18 @@ void wczytaj_plik(Tabela tabelka)
 
 		// wczytaj iloscKolumn
 		int iloscKolumn = 0;
-		plik >> iloscKolumn;	
+		plik >> iloscKolumn;
 
 		// teraz trzeba ustawic rozmiar tablicy
 		tablica_zmien_rozmiar(tabelka, iloscWierszy, iloscKolumn);
 
-		for (int i = 0; i < iloscWierszy; i++) 
+		for (int i = 0; i < iloscWierszy; i++)
 		{
 			for(int j = 0; j < iloscKolumn; j++)
 			{
 				plik >> tabelka.tablica[i][j];
 			}
-		}	
+		}
 	}
 }
 
@@ -49,9 +49,9 @@ void zapisz_plik(Tabela tabelka)
 	// kolejne wiersze - wiersze i kolumny
     if(plik.good())
     {
-        for (int i = 0; i < tabelka.pocziloscWierszy; i++) 
+        for (int i = 0; i < tabelka.pocziloscWierszy; i++)
         {
-			for(int j = 0; j < tabelka.pocziloscKolumn; j++) 
+			for(int j = 0; j < tabelka.pocziloscKolumn; j++)
 			{
 				// kazda wartosc w nowej linii - latwiej wczytac
 				plik << tabelka.tablica[i][j] << endl;
@@ -74,7 +74,7 @@ void tablica_zmien_rozmiar (Tabela tabelka, int iloscWierszy, int iloscKolumn)
 	}
 
 	// kopiowanie zawartosci poprzedniej tablicy do nowej
-	for (int i = 0; i < iloscWierszy; i++) 
+	for (int i = 0; i < iloscWierszy; i++)
 	{
 		for(int j = 0; j < iloscKolumn; j++)
 		{
@@ -90,7 +90,12 @@ void tablica_zmien_rozmiar (Tabela tabelka, int iloscWierszy, int iloscKolumn)
 	}
 
 	// usuniecie starej tablicy
-	delete *tabelka.tablica;
+	for(int i=0; i<iloscWierszy; i++)
+	{
+		delete tabl[i];
+	}
+
+	delete tabelka.tablica;
 
 	tabelka.pocziloscWierszy = iloscWierszy;
 	tabelka.pocziloscKolumn = iloscKolumn;
@@ -99,7 +104,7 @@ void tablica_zmien_rozmiar (Tabela tabelka, int iloscWierszy, int iloscKolumn)
 	X = tabelka;
 }
 
-void tablica_dodaj_element (Tabela tabelka) 
+void tablica_dodaj_element (Tabela tabelka)
 {
     int numer_wiersza = 0;
     cout << "Podaj nr wiersza: " <<endl;
@@ -112,11 +117,11 @@ void tablica_dodaj_element (Tabela tabelka)
     int wartosc= 0;
     cout << "Podaj wartosc do wpisania: " <<endl;
     cin >> wartosc;
-	
+
     tabelka.tablica[numer_wiersza - 1][numer_kolumny - 1] = wartosc;
 }
 
-void max(Tabela tabelka)
+int max(Tabela tabelka)
 {
     int max = tabelka.tablica[0][0];
     for(int i=0; i<tabelka.pocziloscWierszy; i++)
@@ -129,10 +134,10 @@ void max(Tabela tabelka)
 		}
 	}
 
-	cout << max;
+	return max;
 }
 
-void min(Tabela tabelka)
+int min(Tabela tabelka)
 {
         int min = tabelka.tablica[0][0];
         for(int i=0; i<tabelka.pocziloscWierszy; i++)
@@ -145,20 +150,20 @@ void min(Tabela tabelka)
 		}
 	}
 
-	cout << min;
+	return min;
 }
 
-void srednia(Tabela tabelka)
+float srednia(Tabela tabelka)
 {
         float suma = 0;
         for(int i=0; i<tabelka.pocziloscWierszy; i++)
 	{
 		for(int j=0; j<tabelka.pocziloscKolumn; j++)
 		{
-			suma + tabelka.tablica[i][j];
-			
+			suma += tabelka.tablica[i][j];
 		}
 	}
 	float ilosc = tabelka.pocziloscWierszy * tabelka.pocziloscKolumn;
-	cout << suma/ilosc ;
+	float srednia =suma/ilosc;
+	return srednia;
 }
