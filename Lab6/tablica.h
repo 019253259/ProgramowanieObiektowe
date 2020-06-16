@@ -4,6 +4,7 @@ using namespace std;
 #ifndef tablica_h
 #define tablica_h
 
+//funkcja enum ulatwia czytanie programu
 enum Typ {
    Liczba = 0,
    Tekst = 1
@@ -11,6 +12,10 @@ enum Typ {
 
 class Komorka {
    public:
+      /**
+      * @param [in] wartosc - zawartosc komorki jezeli Typ jest liczba
+      * @param [in] tekst - zawartosc komorki jezeli Typ jest tekstem
+      */
       int wartosc;
       string tekst;
       Typ typ = Liczba;
@@ -20,6 +25,11 @@ class Komorka {
 
 class Tablica {
    private:
+      /** 
+      * @param [in] pocziloscWierszy - ilosc wierszy w tablicy
+      * @param [in] pocziloscKolumn - ilosc kolumn w tablicy
+      * @param [in,out] tab - tablica dwuwymiarowa
+      */
       int pocziloscWierszy = 0;
       int pocziloscKolumn = 0;
       Komorka **tab = new Komorka*[pocziloscWierszy];
@@ -31,6 +41,11 @@ class Tablica {
 
 		void zapiszPlik();
 
+
+		/**
+		* @param [in] iloscWierszy - ilosc wierszy ktora chcemy ustawic
+		* @param [in] iloscKolumn - ilosc kolumn ktora chcemy ustawic
+		*/
 		void zmienRozmiar(int iloscWierszy, int iloscKolumn);
 
 		void dodajElement();
